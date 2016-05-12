@@ -1,0 +1,6 @@
+node_modules/
+*.log
+commit.properties
+.idea/
+*.swp
+build/

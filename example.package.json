@@ -1,0 +1,7 @@
+{
+  "microservices": [
+    "proxy.service.consul",
+    "rabbitmq.service.consul",
+    "mongo.service.consul"
+  ]
+}

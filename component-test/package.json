@@ -1,0 +1,6 @@
+{
+	"microservices": [
+		"component.service.consul",
+		"component2.service.consul"
+	]
+}
