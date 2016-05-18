@@ -52,7 +52,7 @@ var settings = {
 	dnsmasq: {
 		hostsPath: '/hosts/',
 		hostsFile: 'hosts.serf',
-		resolvFile: '/resolv.conf'
+		resolvFile: process.env.EYEOS_RUN_SERVER_RESOLV || '/resolv.conf'
 	},
 	gatewayResolver: {
 		resolvFile: '/etc/resolv.conf',
