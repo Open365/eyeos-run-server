@@ -55,7 +55,6 @@ var settings = {
 		resolvFile: process.env.EYEOS_RUN_SERVER_RESOLV || '/resolv.conf'
 	},
 	gatewayResolver: {
-		resolvFile: '/etc/resolv.conf',
 		hostsFile: '/etc/hosts'
 	},
 	microServiceChecker: {

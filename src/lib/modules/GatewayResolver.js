@@ -33,14 +33,8 @@ GatewayResolver.prototype.start = function(callback) {
 			return;
 		}
 
-		var nameserver = 'nameserver ' + gateway + '\n';
-		fs.writeFile(self.settings.gatewayResolver.resolvFile, nameserver, function(err) {
-			if (err) {
-				callback(err);
-			}
-			fs.appendFile(self.settings.gatewayResolver.hostsFile, gateway + " gateway", function(err) {
-				callback(err);
-			});
+		fs.appendFile(self.settings.gatewayResolver.hostsFile, gateway + " gateway", function(err) {
+			callback(err);
 		});
 	});
 };
