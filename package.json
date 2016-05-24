@@ -6,9 +6,8 @@
   "author": "eyeOS",
   "homepage": "http://www.eyeos.com/",
   "dependencies": {
-    "async": "^1.4.0",
+    "async": "1.4.0",
     "eyeos-check-availability": "*",
-    "eyeos-hooks": "*",
     "mkdirp": "0.5.1",
     "nopt": "3.0.2",
     "nopt-usage": "0.1.0",
@@ -25,6 +24,7 @@
     "dev-null": "^0.1.1",
     "eyeos-component-tests": "*",
     "eyeos-gruntfile": "*",
+    "eyeos-hooks": "*",
     "grunt": "0.4.5",
     "grunt-init": "0.3.2",
     "grunt-mocha-test": "0.12.6",
