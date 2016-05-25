@@ -1,6 +1,6 @@
 {
   "name": "eyeos-run-server",
-  "version": "0.0.121",
+  "version": "0.0.122",
   "description": "encapsulates different process as one",
   "main": "src/eyeos-run-server.js",
   "author": "eyeOS",
