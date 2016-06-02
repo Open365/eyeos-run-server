@@ -29,9 +29,13 @@ Gateway.prototype.get = function(callback) {
 		if (error) {
 			err = new Error("Error happened while getting the gateway: " + error);
 			console.log(err);
-			callback(err);
+			return callback(err);
 		}
 		var gateway = stdout.split('\n')[0];
+		if (!gateway || typeof gateway != "string" || gateway.length == 0) {
+			return callback(new Error("Gateway not found"));
+		}
+
 		callback(null, gateway);
 	});
 };
