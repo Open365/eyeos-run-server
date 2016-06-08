@@ -20,7 +20,6 @@
 var nopt = require("nopt");
 var noptUsage = require("nopt-usage");
 var async = require('async');
-var EyeosFS = require('./EyeosFS');
 var settings = require('../settings');
 var knownOpts = require('./nopt/knownOpts.js');
 var shortHands = require('./nopt/shortHands.js');
@@ -36,7 +35,6 @@ var DnsMasq = require('./DnsMasq.js');
 
 
 var Main = function () {
-	this.eyeosFS = null;
 	this.services = null;
 	this.serf = null;
 	this.loggerFactory = null;
@@ -74,9 +72,6 @@ Main.prototype.start = function start () {
 	if (parsed.serf || parsed['gateway-resolver']) {
 		functions.push(this.startMicroserviceChcecker.bind(this));
 	}
-	if (parsed.eyeosfs) {
-		functions.push(this.startEyeosFs.bind(this));
-	}
 	functions.push(function (logger) {
 		self.startServices(parsed.argv.remain, logger);
 	});
@@ -100,10 +95,6 @@ Main.prototype.stop = function stop (exitCode) {
 		this.services.stop();
 	}
 	console.log("AFTER SERVICES STOP");
-	if (this.eyeosFS) {
-		console.log("STOPPING EYEOSFS");
-		this.eyeosFS.stop();
-	}
 	if (this.serf) {
 		console.log("STOPPING SERF");
 		this.serf.stop();
@@ -115,26 +106,6 @@ Main.prototype.stop = function stop (exitCode) {
 		throw error;
 	}, 1000);
 
-};
-
-Main.prototype.startEyeosFs = function startEyeosFs (callback) {
-	console.log("Starting eyeosFS...");
-	var self = this;
-	this.eyeosFS = new EyeosFS(settings.eyeosfs, self.loggerFactory, self.logger);
-	this.eyeosFS.start(function (err) {
-		if (err) {
-			console.log("EyeOsFS: " + err);
-			self.handleExit(1);
-		}
-
-		callback(null);
-	});
-
-	this.eyeosFS.on('error', function (err) {
-		console.log("eyeosFS error:", err);
-		console.log("Exiting eyeos-run-server because eyeosFS check failed");
-		this.handleExit(1);
-	});
 };
 
 Main.prototype.startLogger = function startLogger (callback) {

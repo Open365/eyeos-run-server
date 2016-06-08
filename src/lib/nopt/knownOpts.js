@@ -18,7 +18,6 @@
 */
 
 var knownOpts = {
-	"eyeosfs": Boolean,
 	"consul": Boolean,
 	"serf": Boolean,
 	'gateway-resolver': Boolean,

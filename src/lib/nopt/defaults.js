@@ -18,7 +18,6 @@
 */
 
 var defaults = {
-	"eyeosfs" : false,
 	"consul": false,
 	"skip-dnsmasq": false,
 	"serf": false
