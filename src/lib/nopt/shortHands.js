@@ -18,7 +18,6 @@
 */
 
 var shortHands = {
-	"fs" : ["--eyeosfs"],
 	"co" : ["--consul"],
 	"sf" : ["--serf"]
 };

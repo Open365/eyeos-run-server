@@ -22,14 +22,6 @@ if(process.env.SERF_ARGS){
 }
 
 var settings = {
-	eyeosfs: {
-		retry: 1000,
-		maxAttemps: 10,
-		mountpoint: '/mnt/eyeosFS',
-		rawMountpoint: '/mnt/rawFS',
-		notifyfs: '/var/notifyfs/src/eyeos-notifyfs.js',
-		userDriveMounter: '/var/user-drive-mounter/src/eyeos-user-drive-mounter.js'
-	},
 	serf: {
 		binary: 'serf',
 		start: serf_args_env || ["agent", "--log-level=DEBUG", "-join", "172.17.42.1", "-event-handler=tagsToDns"],
@@ -63,5 +55,4 @@ var settings = {
 	}
 };
 
-settings.eyeosfs.cmd = process.env.EYEOS_NFS_MOUNT || "mount -t nfs4 -o " + settings.eyeosfs.options + " " + settings.eyeosfs.export + " " + settings.eyeosfs.mountpoint;
 module.exports = settings;

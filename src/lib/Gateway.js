@@ -24,14 +24,18 @@ var Gateway = function() {
 };
 
 Gateway.prototype.get = function(callback) {
-	child_process.exec('sh -c \'route -n\' | grep 0.0.0.0 | grep G | awk \'{ print $2 }\'', function (error, stdout, stderr) {
+	child_process.exec('sh -c \'route -ne\' | grep 0.0.0.0 | grep G | awk \'{ print $2 }\'', function (error, stdout, stderr) {
 		var err;
 		if (error) {
 			err = new Error("Error happened while getting the gateway: " + error);
 			console.log(err);
-			callback(err);
+			return callback(err);
 		}
 		var gateway = stdout.split('\n')[0];
+		if (!gateway || typeof gateway != "string" || gateway.length == 0) {
+			return callback(new Error("Gateway not found"));
+		}
+
 		callback(null, gateway);
 	});
 };

@@ -18,7 +18,6 @@
 */
 
 var description = {
-	"eyeosfs" : "Should eyeos-fs be enabled",
 	"consul": "To start or not start consul.",
 	"serf": "Use serf",
 	"skip-dnsmasq": "Do not start dnsmasq on the container",
