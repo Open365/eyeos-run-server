@@ -225,6 +225,13 @@ Main.prototype.__setListeners = function __setListeners (union) {
 		console.log("Exiting eyeos-run-server because child process " + exitedProcess.appName + " died with code " + exitedProcess.code);
 		self.handleExit(1);
 	});
+
+	process.on('SIGTERM', function () {
+		console.log('received SIGTERM');
+		if (self.services) {
+			self.services.stop();
+		}
+	});
 };
 
 Main.prototype.handleExit = function handleExit (exitCode) {

@@ -48,6 +48,7 @@ ProcessUnion.prototype.execute = function() {
 };
 
 ProcessUnion.prototype.stop = function() {
+	console.log('Sending SIGTERM to processes...');
 	for(var i=0; i<this.executedProcesses.length; i++) {
 		this.executedProcesses[i].kill();
 	}
