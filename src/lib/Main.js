@@ -47,6 +47,11 @@ Main.prototype.start = function start () {
 	var usage = noptUsage(knownOpts, shortHands, description, defaults);
 	var parsed = nopt(knownOpts, shortHands, process.argv, 2);
 
+	// Feature toggling for serf
+	if (parsed.serf && settings.serviceDiscovery != 'serf') {
+		parsed.serf = false;
+	}
+
 	var functions = [];
 
 	functions.push(this.startLogger.bind(this));
