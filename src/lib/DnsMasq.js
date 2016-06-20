@@ -36,6 +36,7 @@ DnsMasq.prototype.start = function () {
 	var binary = 'dnsmasq';
 	var args = ['-k', '--log-facility=/dnsmasq.log', '--resolv-file=' + settings.dnsmasq.resolvFile, '--addn-hosts=' + hostsFile];
 
+	console.log('Starting dnsmasq: ' + binary + ' ' + args.join(' '));
 	var dns = self.child_process.spawn(binary, args);
 
 	dns.on('close', function (code) {
