@@ -52,7 +52,8 @@ var settings = {
 	microServiceChecker: {
 		timeout: process.env.MICROSERVICE_TIMEOUT || 60000,
 		retryTime: process.env.MICROSERVICE_RETRYTIME || 1000
-	}
+	},
+	serviceDiscovery: process.env.EYEOS_SERVICE_DISCOVERY || 'serf'
 };
 
 module.exports = settings;
